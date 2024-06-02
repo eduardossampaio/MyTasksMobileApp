@@ -1,0 +1,18 @@
+CREATE TABLE CheckboxItem (
+      id TEXT NOT NULL,
+      name TEXT NOT NULL,
+      completed INTEGER NOT NULL,
+      taskId TEXT NOT NULL
+);
+
+insertCheckbox:
+INSERT INTO CheckboxItem(id,name,completed,taskId)VALUES (?,?,0,?);
+
+selectCheckboxes:
+SELECT * FROM CheckboxItem WHERE taskId = ?;
+
+updateCheckbox:
+UPDATE CheckboxItem SET name = ?, completed = ? WHERE id = ?;
+
+deleteCheckbox:
+DELETE FROM CheckboxItem WHERE id = ?;

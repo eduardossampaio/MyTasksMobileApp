@@ -1,5 +1,6 @@
 [versions]
 agp = "8.4.0"
+
 kotlin = "1.9.20"
 compose = "1.5.4"
 compose-compiler = "1.5.4"
@@ -11,8 +12,20 @@ junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
 material = "1.12.0"
+navigationCompose = "2.7.7"
+skie = "0.8.0"
+ktor_version = "2.3.11"
+kotlinx-datetime = "0.4.1"
+koin = "3.5.6"
+sqlidelight = "2.0.2"
+kotlinxCoroutinesCore = "1.8.0"
+lifecycleViewmodelKtx = "2.8.0"
+vectorize="1.0.0"
+
 
 [libraries]
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+compose-vectorize-core = { module = "dev.sergiobelda.compose.vectorize:compose-vectorize-core", version.ref = "vectorize" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
@@ -26,6 +39,21 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+kotlinx-datetime = {module="org.jetbrains.kotlinx:kotlinx-datetime", version.ref="kotlinx-datetime"}
+
+#koin
+koin-core= {module="io.insert-koin:koin-core", version.ref="koin"}
+koin-android = {module="io.insert-koin:koin-android", version.ref="koin"}
+koin-compose= { module="io.insert-koin:koin-androidx-compose" , version.ref="koin"}
+
+#sqlideligh
+sqldelight-android-driver = { module="app.cash.sqldelight:android-driver" , version.ref="sqlidelight"}
+sqldelight-native-driver = { module="app.cash.sqldelight:native-driver", version.ref="sqlidelight"}
+sqldelight-coroutines-extensions = { module="app.cash.sqldelight:coroutines-extensions", version.ref="sqlidelight"}
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -33,3 +61,6 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+skie = {id="co.touchlab.skie", version.ref="skie"}
+sqldelight = { id="app.cash.sqldelight", version.ref="sqlidelight"}
+vectorize={id="dev.sergiobelda.compose.vectorize", version.ref="vectorize"}

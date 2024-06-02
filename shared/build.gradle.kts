@@ -2,6 +2,10 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.kotlinCocoapods)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.skie)
+    kotlin("plugin.serialization") version ("1.9.20")
+    alias(libs.plugins.sqldelight)
+//    alias(libs.plugins.vectorize)
 }
 
 kotlin {
@@ -30,10 +34,25 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+//            implementation(project(":CoreApplication"))
+            runtimeOnly(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.sqldelight.coroutines.extensions)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.koin.core)
+            implementation(libs.compose.vectorize.core)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+        androidMain.dependencies {
+            implementation(libs.androidx.lifecycle.viewmodel.ktx)
+            implementation(libs.sqldelight.android.driver)
+            implementation(libs.koin.android)
+        }
+        iosMain.dependencies {
+
+            implementation(libs.sqldelight.native.driver)
         }
     }
 }
@@ -49,6 +68,14 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
-dependencies {
-    implementation(project(":CoreApplication"))
+sqldelight {
+    databases {
+        create("MyTasksDatabase") {
+            packageName.set("com.eduardossampaio.mytasks.persistence.db")
+        }
+    }
 }
+dependencies {
+//    implementation(project(":CoreApplication"))
+}
+task("testClasses")

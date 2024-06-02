@@ -1,0 +1,46 @@
+CREATE TABLE TaskTable (
+    id TEXT NOT NULL PRIMARY KEY ,
+    name TEXT NOT NULL,
+    description TEXT,
+    completed INTEGER NOT NULL,
+    creation_date TEXT NOT NULL,
+    notification_date TEXT,
+    archived INTEGER NOT NULL
+);
+
+insertTasks:
+INSERT INTO TaskTable(id,name,description,completed,creation_date,notification_date,archived)
+VALUES(?,?,?,0,?,?,0);
+
+editTask:
+UPDATE TaskTable SET name = ?, description = ? , completed = ?, notification_date = ?, archived = ?
+WHERE id = ?;
+
+deleteTask:
+DELETE FROM TaskTable WHERE id = ?;
+
+selectAllTasks:
+SELECT * FROM TaskTable;
+
+selectTaskById:
+SELECT * FROM TaskTable WHERE id = ?;
+-- selectSingleTask:
+-- SELECT
+--     TASK.id,
+--     TASK.name,
+--     TASK.description,
+--     TASK.completed,
+--     TASK.creation_date,
+--     TASK.notification_date,
+--     TASK.archived,
+--     CB.id AS checkboxId,
+--     CB.name AS checkboxName,
+--     CB.completed AS checkboxCompleted,
+--     CB.taskId AS taskID
+--     FROM  TASK, CheckboxItem CB WHERE TASK.id = taskID;
+
+selectAllTaskByArchiving:
+SELECT * FROM TaskTable WHERE archived = ?;
+
+selectAllTasksBetweenDates:
+SELECT * FROM TaskTable WHERE creation_date BETWEEN ? AND ?;

@@ -17,4 +17,3 @@ dependencyResolutionManagement {
 rootProject.name = "MyTasks"
 include(":MyTasksAndroidApp")
 include(":shared")
-include(":CoreApplication")
